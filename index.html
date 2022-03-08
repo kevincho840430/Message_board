@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta chaarset="UTF-8">
+    <title>留言板</title>
+</head>
+<body>
+        <center><h1>留言</h1></center>
+        <center>
+            <form action="{{  url_for('index')  }}" method="POST">
+                  用戶名：<input type ="text" name="say_user"><br>
+                  留言標題：<input type ="text" name="say_title"><br>
+                  留言內容：<input type ="text" name="say"><br>
+                  <button>提交留言</button>
+            </form>
+        </center>
+
+    <center>
+        <table border="2">
+            <thread>
+            <tr>
+                <th>標題</th>
+                <th>內容</th>
+                <th>用戶</th>
+                <th>留言時間</th>
+            </tr>
+            </thead>
+
+            <tbody>
+            {% for say in says %}
+                <tr>
+                    <td>{{ say['title'] }}</td>
+                    <td>{{ say['text'] }}</td>
+                    <td>{{ say['user'] }}</td>
+                    <td>{{ say['date'] }}</td>
+                </tr>
+            {% endfor %}
+          </tbody>
+        </table>
+    </center>
+</body>
+</html>
